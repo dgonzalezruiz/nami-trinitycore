@@ -1,0 +1,15 @@
+language: bash
+sudo: required
+script: sudo bash ./helper_scripts/build_all.sh
+services: docker
+deploy:
+ provider: script
+  script: bash ./helper_scripts/push_all.sh
+  skip_cleanup: true
+  on:
+    branch: master
+env:
+  global:
+  - ENCRYPTION_LABEL: "e2e143fbbb69"
+  - COMMIT_AUTHOR_EMAIL: "annihidata@gmail.com"
+
