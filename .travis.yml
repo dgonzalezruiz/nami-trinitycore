@@ -9,7 +9,3 @@ deploy:
   file: trinitycore-module*.tar.gz
   on:
     repo: dgonzalezruiz/nami-trinitycore
-env:
-  global:
-  - ENCRYPTION_LABEL: e2e143fbbb69
-  - COMMIT_AUTHOR_EMAIL: annihidata@gmail.com
