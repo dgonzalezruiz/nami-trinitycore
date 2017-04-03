@@ -39,7 +39,7 @@ tar xzf $workingDir/trinityrelease/files/*.tar.gz
 rm $workingDir/trinityrelease/files/*.tar.gz
 sed -i 's/<<version>>/3.3.5/g' $workingDir/trinityrelease/nami.json.tpl
 sed -i 's/<<revision>>/1/g' $workingDir/trinityrelease/nami.json.tpl
-$mv $workingDir/trinityrelease/nami.json.tpl $workingDir/trinityrelease/nami.json
+mv $workingDir/trinityrelease/nami.json.tpl $workingDir/trinityrelease/nami.json
 cd $workingDir
 tar czf trinitycore-module-3.3.5-r1.tar.gz $workingDir/trinityrelease
 ## 
