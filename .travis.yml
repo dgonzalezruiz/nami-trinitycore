@@ -1,4 +1,4 @@
-language: bash
+language: node
 sudo: required
 script: sudo bash ./helper_scripts/build_all.sh
 services: docker
