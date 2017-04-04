@@ -1,4 +1,6 @@
-language: node
+language: node_js
+node_js:
+  - "6"
 sudo: required
 script: sudo env PATH=$PATH bash ./helper_scripts/build_all.sh 
 services: docker
