@@ -18,7 +18,7 @@ log() {
 export npmPath=$1
 log "=================================="
 log "Looking for npm files or folders.."
-find / -name *npm*
+npm version
 log "=================================="
 
 ## Build environment set up
