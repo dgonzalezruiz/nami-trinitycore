@@ -15,8 +15,12 @@ log() {
     echo "$@" >&2
 }
 
-npmPath=$1
-find / -name npm
+export npmPath=$1
+log "=================================="
+log "Looking for npm files or folders.."
+find / -name *npm*
+log "=================================="
+
 ## Build environment set up
 log "=================================="
 log "Setting up building environment..."

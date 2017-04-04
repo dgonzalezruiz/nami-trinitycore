@@ -27,8 +27,8 @@ docker build compilation -t buildenvironment
 
 ## Set up the compilation tool
 cd $workingDir/blacksmith
-npm install
-npm run install-runtime
+$npmPath install
+$npmPath run install-runtime
 blacksmith=$workingDir/blacksmith/bin/blacksmith
 $blacksmith --help
 $blacksmith configure containerizedBuild.images[0].id buildenvironment
