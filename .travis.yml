@@ -1,6 +1,6 @@
 language: node
 sudo: required
-script: sudo bash ./helper_scripts/build_all.sh
+script: sudo bash ./helper_scripts/build_all.sh `which npm`
 services: docker
 deploy:
   provider: releases
