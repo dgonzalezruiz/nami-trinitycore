@@ -6,9 +6,6 @@ export SQL_FILES=TDB_full_335.62_2016_10_17
 SERVER_SQL=https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.62/$SQL_FILES.7z
 
 
-## Install required packages
-apt-get update && apt-get install wget p7zip -y
-
 ## Retrieve all stuff required from the internet
 git clone -b 3.3.5 --single-branch https://github.com/TrinityCore/TrinityCore 
 git clone https://github.com/bitnami/blacksmith

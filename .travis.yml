@@ -1,8 +1,17 @@
 language: node_js
 node_js:
   - "6"
-sudo: required
-script: sudo env PATH=$PATH bash ./helper_scripts/build_all.sh 
+before_install:
+  - pwd
+install:
+  - pwd
+before_script:
+  - pwd 
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq wget p7zip
+script: 
+  - pwd
+  - travis_wait 25 ./helper_scripts/build_all.sh 
 services: docker
 deploy:
   provider: releases

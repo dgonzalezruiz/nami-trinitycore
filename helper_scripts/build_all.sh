@@ -15,12 +15,8 @@ log() {
     echo "$@" >&2
 }
 
-export npmPath=$1
-log "=================================="
-log "Looking for npm files or folders.."
-npm version
-log "=================================="
-
+pwd
+echo $workingDir
 ## Build environment set up
 log "=================================="
 log "Setting up building environment..."
