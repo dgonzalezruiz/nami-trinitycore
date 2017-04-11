@@ -17,25 +17,25 @@ p7zip -d $SQL_FILES.7z
 
 
 ## Add stuff to path
-export PATH=$workingDir/blacksmith/bin:$PATH
+#export PATH=$workingDir/blacksmith/bin:$PATH
 
 ## Build the docker image that we'll use later for compilation purposes
-docker build compilation -t buildenvironment
+#docker build compilation -t buildenvironment
 
 ## Set up the compilation tool
-cd $workingDir/blacksmith
-npm install
-npm run install-runtime
-blacksmith=$workingDir/blacksmith/bin/blacksmith
-$blacksmith --help
-$blacksmith configure containerizedBuild.images[0].id buildenvironment
-$blacksmith configure paths.output /tmp/trinitycore/blacksmith-output
-$blacksmith configure paths.sandbox /tmp/trinitycore/blacksmith-sandbox
-$blacksmith configure paths.recipes $workingDir/compilation
-$blacksmith configure compilation.prefix /opt/trinitycore
+#cd $workingDir/blacksmith
+#npm install
+#npm run install-runtime
+#blacksmith=$workingDir/blacksmith/bin/blacksmith
+#$blacksmith --help
+#$blacksmith configure containerizedBuild.images[0].id buildenvironment
+#$blacksmith configure paths.output /tmp/trinitycore/blacksmith-output
+#$blacksmith configure paths.sandbox /tmp/trinitycore/blacksmith-sandbox
+#$blacksmith configure paths.recipes $workingDir/compilation
+#$blacksmith configure compilation.prefix /opt/trinitycore
 
 ## Compress the source repo for compilation
 cd $workingDir
-tar czf trinitycore.tar.gz TrinityCore
+#tar czf trinitycore.tar.gz TrinityCore
 
 
