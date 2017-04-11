@@ -29,7 +29,7 @@ log "Performing compilation..."
 #$workingDir/blacksmith/bin/blacksmith --log-level=trace8 containerized-build trinitycore:$workingDir/trinitycore.tar.gz | tee /tmp/blacksmith_output
 mkdir $workingDir/TrinityCore/bin
 cd $workingDir/TrinityCore/bin
-cmake ../ -DCMAKE_INSTALL_PREFIX=/tmp/trinity-core/bin
+cmake ../ -DCMAKE_INSTALL_PREFIX=/tmp/trinity-core
 make -j 8 -k && make install
 ls /tmp/trinity-core
 cd $workingDir/TrinityCore
