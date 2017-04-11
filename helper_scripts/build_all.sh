@@ -26,7 +26,16 @@ log "=================================="
 
 log "=================================="
 log "Performing compilation..."
-$workingDir/blacksmith/bin/blacksmith --log-level=trace8 containerized-build trinitycore:$workingDir/trinitycore.tar.gz | tee /tmp/blacksmith_output
+#$workingDir/blacksmith/bin/blacksmith --log-level=trace8 containerized-build trinitycore:$workingDir/trinitycore.tar.gz | tee /tmp/blacksmith_output
+mkdir $workingDir/TrinityCore/bin
+cd $workingDir/TrinityCore/bin
+cmake ../ -DCMAKE_INSTALL_PREFIX=/tmp/trinity-core/bin
+make -j 8 -k && make install
+ls /tmp/trinity-core
+cd $workingDir/TrinityCore
+tar czf trinitycore.tar.gz /tmp/trinity-core
+
+
 log "Compilation finished"
 log "==================================="
 
@@ -34,7 +43,8 @@ log "==================================="
 cp -a $workingDir/trinitycore-module $workingDir/trinityrelease
 
 ## Artifacts tarball is retrieved
-artifactsDir=`cat /tmp/blacksmith_output | cut -d: -f2 | grep artifacts | grep tmp`
+#artifactsDir=`cat /tmp/blacksmith_output | cut -d: -f2 | grep artifacts | grep tmp`
+artifactsDir=$workingDir/TrinityCore
 cp $artifactsDir/*.tar.gz $workingDir/trinityrelease/files
 cd $workingDir/trinityrelease/files 
 tar xzf $workingDir/trinityrelease/files/*.tar.gz 
