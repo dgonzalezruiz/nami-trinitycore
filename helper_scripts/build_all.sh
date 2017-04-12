@@ -53,16 +53,19 @@ sed -i 's/<<version>>/3.3.5/g' $workingDir/trinityrelease/nami.json.tpl
 sed -i 's/<<revision>>/1/g' $workingDir/trinityrelease/nami.json.tpl
 mv $workingDir/trinityrelease/nami.json.tpl $workingDir/trinityrelease/nami.json
 cd $workingDir
-tar czf trinitycore-module-3.3.5-r1.tar.gz $workingDir/trinityrelease
+mv $SQL_files $workingDir/trinityrelease/files
+for i in sql/base sql/updates ; do
+  mkdir -p $workingDir/trinityrelease/files/$i
+done
+mv $workingDir/TrinityCore/sql/base/*_database.sql $workingDir/trinityrelease/files/sql/base
+mv $workingDir/TrinityCore/sql/updates $workingDir/trinityrelease/files/sql/updates
+
+tar czf trinitycore-module-3.3.5-r1.tar.gz trinityrelease
 ## 
-
-
 
 ## Testing
 
-
-
-WIP
+#WIP
 
 
 

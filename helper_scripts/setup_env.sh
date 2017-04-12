@@ -7,8 +7,8 @@ SERVER_SQL=https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.6
 
 
 ## Retrieve all stuff required from the internet
-git clone -b 3.3.5 --single-branch https://github.com/TrinityCore/TrinityCore 
-git clone https://github.com/bitnami/blacksmith
+#git clone -b 3.3.5 --single-branch https://github.com/TrinityCore/TrinityCore 
+#git clone https://github.com/bitnami/blacksmith
 wget $SERVER_SQL
 
 ## Move SQL set to compilation environment
