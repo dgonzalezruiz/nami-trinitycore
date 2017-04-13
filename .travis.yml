@@ -6,4 +6,14 @@ compiler:
 before_install: ./helper_scripts/setup_env.sh
 install: ./helper_scripts/build_all.sh
 script: 
-  - echo "Succesful build" 
+  - echo "Succesful build"
+  - echo "Testing..." 
+-deploy:
+  provider: releases
+  file_glob: true
+  skip_cleanup: true
+  api_key:
+    secure: TMXW7uSuzuThBJ26sY0kcu9nZyZrpZjv8GF3/N7wqBCkFfnVUr8NfEwqWfFGvIDMPNBBMqNVql8fCDnOVDjFjM2QSpCo06pi4evhhlGuh/J78nBMEV
+  file: trinitycore-module*.tar.gz
+  on:
+    repo: dgonzalezruiz/nami-trinitycore

@@ -17,11 +17,10 @@ log() {
 
 log "=================================="
 log "Performing compilation..."
-#$workingDir/blacksmith/bin/blacksmith --log-level=trace8 containerized-build trinitycore:$workingDir/trinitycore.tar.gz | tee /tmp/blacksmith_output
-#mkdir $workingDir/TrinityCore/bin
-#cd $workingDir/TrinityCore/bin
-#cmake ../ -DCMAKE_INSTALL_PREFIX=/tmp/trinity-core
-#make -j 8 -k && make install
+mkdir $workingDir/TrinityCore/bin
+cd $workingDir/TrinityCore/bin
+cmake ../ -DCMAKE_INSTALL_PREFIX=/tmp/trinitycore
+make -j 8 -k && make install
 log "skipping compilation"
 log "Compilation finished"
 log "==================================="
@@ -29,15 +28,20 @@ log "==================================="
 ## Preparing the module release
 releaseFolder=$workingDir/trinitycore-nami
 cp -a $workingDir/trinitycore-module $releaseFolder
-mkdir -p $releaseFolder/files/trinitycore
-mv $workingDir/TDB_full_335* $releaseFolder/files/trinitycore
+mv /tmp/trinitycore $releaseFolder/files/trinitycore
+mv $workingDir/TDB_full_335* $releaseFolder/files/trinitycore/
 for i in sql/base sql/updates ; do
-  mkdir -p $releaseFolder/files/$i
+  mkdir -p $releaseFolder/files/trinitycore/$i
 done
 mv $workingDir/TrinityCore/sql/base/*_database.sql $releaseFolder/files/trinitycore/sql/base
 mv $workingDir/TrinityCore/sql/updates $releaseFolder/files/trinitycore/sql/updates
 rm $releaseFolder/files/README.md
 ls -lahrtR $releaseFolder
+
+moduleVersion=`cat TRINITYCORE_NAMI_VERSION`
+moduleRevision=$((`cat TRINITYCORE_NAMI_REVISION` + 1))
+cd $workingDir
+tar czf trinitycore-module-${moduleVersion}-r${moduleRevision}.tar.gz $releaseFolder
 
 ## Artifacts tarball is retrieved
 #artifactsDir=`cat /tmp/blacksmith_output | cut -d: -f2 | grep artifacts | grep tmp`
