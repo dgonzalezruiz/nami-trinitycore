@@ -30,7 +30,7 @@ log "==================================="
 releaseFolder=$workingDir/trinitycore-nami
 cp -a $workingDir/trinitycore-module $releaseFolder
 mkdir -p $releaseFolder/files/trinitycore
-mv $workingDir/TDB_full_335*_ $releaseFolder/files/trinitycore
+mv $workingDir/TDB_full_335* $releaseFolder/files/trinitycore
 for i in sql/base sql/updates ; do
   mkdir -p $releaseFolder/files/$i
 done
