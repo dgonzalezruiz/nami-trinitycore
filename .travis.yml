@@ -11,10 +11,3 @@ install:
   - git clone -b 3.3.5 --single-branch https://github.com/TrinityCore/TrinityCore
 script: 
   - ./helper_scripts/build_all.sh 
-deploy:
-  provider: releases
-  api_key:
-    secure: TMXW7uSuzuThBJ26sY0kcu9nZyZrpZjv8GF3/N7wqBCkFfnVUr8NfEwqWfFGvIDMPNBBMqNVql8fCDnOVDjFjM2QSpCo06pi4evhhlGuh/J78nBMEVeZSJm5U2yARjNVJ/oXwhR4L9HwesLIfiu9zugIph79xE6R6tXvhNm8HRXNEXqznGVnhYP/+LAVlimh5IVENMnuz3H15+/OJZDCbRmjCBYgqA+mtbQ0ejpMONE6Q44FF45p2L6tQOl9g0C5vcNTHKzj8iS/XQpuDG0uxTQEewZTfCeniQ+qGaejW5afPH9T3oQ+LSUgVwQHrIkeIcSFdS++w/LAezHMGWOkNzADxvQg3w070Nneo0PxwYUupHE4MxBhB9p/NaQgVPmKqqkGn1mQ4YCgaChseM6FIUOhjTx9mmBJURO0Rn4U9kL/8PgyIdkEOOAA99curcY3/bFqkvX4DC8dMdJVfh8s8GlfPqY4MlR1gWurNLqtFTy4jNs8CQOx5QGmtZvSbztVT/g6TuORcSNbtkYUU0k3xfdsE0JdiGika/nYYX/MjgnO3mYpI/NqvBxQJFyu/XnMy246vjdkHdqylpaQpLCstH4UW8fjVJgH4E7kU1G9myVEScRM0nKOkFjMGjyWICzMOG3mxY53mb37dOlGAkeebAN4F0DvKDaYyqLBqsczPUw=
-  file: trinitycore-module*.tar.gz
-  on:
-    repo: dgonzalezruiz/nami-trinitycore
