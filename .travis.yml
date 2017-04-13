@@ -12,6 +12,8 @@ deploy:
   provider: releases
   api_key:
     secure: hjHHZgluWyf+a9jLuSmTKEaMiDdZX/tM71q59Z7ctSNCWTQhEp3vn/gSRHrbrTWPk0N/mQNkfq/6l51m5eRMuKboMZbPj9H87AJHJn1fKQmmq05d7joq6mKVAzoqMH4Pde1i7NqkJpJLW5PbFIY24nKy7g3FeqnFrp36oUxFTsee0XLt3waYv6COhEDNXyzoUIMP/qdjh2nxXXMeE9hE9R3YUOBrYSehSPxSKY2IFbzPi/q8Gqyw8L2YKem+tbS7T3tGBZnADufZrorENybuUCtIQtcV+n0eiqfVw7yI+QmiFWLtOKV4yM3exnxjKZbB0yG1lA3JCeUvt+6OtxxXMXuktZkgRdWFQHKBji+F/WHhq8LYt7st24wbDz4zGsw3p9GB65OccvFkdOm06cJMRQcPp6AzJELJ4poxLTRnsiURM4hjwjwYqVHu4YsNNK9Umia/4jpUBpTmFGzhalC18mSJqBvpLGkim89IhRSiRbhTix+tK/liER7FDcWBFdAsReXUEfgUUt+BW2Q4aXdQP7ZEtemxvO3K2IAc46pdgzIDv8tQB5BWhm+eUH5ZG+xHIim2tzdxKg0PVy4offSGZfeBQHAslQqWh6QgqS5mJ3aEPY3cruFhAm1Sv3NQzSy493D4WfDF6l7jf379Y4E2yhW4H/h7Nd+iMGx6wYqaSfk=
+  skip_cleanup: true
+  file_glob: true
   file: trinitycore-module*.tar.gz
   on:
     repo: dgonzalezruiz/nami-trinitycore
