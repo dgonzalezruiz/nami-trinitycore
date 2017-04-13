@@ -8,12 +8,12 @@ install: ./helper_scripts/build_all.sh
 script: 
   - echo "Succesful build"
   - echo "Testing..." 
--deploy:
+deploy:
   provider: releases
   file_glob: true
   skip_cleanup: true
   api_key:
     secure: TMXW7uSuzuThBJ26sY0kcu9nZyZrpZjv8GF3/N7wqBCkFfnVUr8NfEwqWfFGvIDMPNBBMqNVql8fCDnOVDjFjM2QSpCo06pi4evhhlGuh/J78nBMEV
-  file: trinitycore-module*.tar.gz
+  file: "trinitycore-module*.tar.gz"
   on:
     repo: dgonzalezruiz/nami-trinitycore
