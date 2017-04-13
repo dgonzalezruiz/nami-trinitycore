@@ -1,6 +1,7 @@
 sudo: required
 dist: trusty
-language: cpp
+language: nodejs
+  - "6.9"
 compiler:
   - clang
 before_install: ./helper_scripts/setup_env.sh

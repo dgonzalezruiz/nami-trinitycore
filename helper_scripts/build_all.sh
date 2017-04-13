@@ -20,7 +20,7 @@ log "Performing compilation..."
 mkdir $workingDir/TrinityCore/bin
 cd $workingDir/TrinityCore/bin
 cmake ../ -DCMAKE_INSTALL_PREFIX=/tmp/trinitycore
-make -j 8 -k && make install
+make -j $((`nproc --all` - 1)) -k && make install
 log "skipping compilation"
 log "Compilation finished"
 log "==================================="
@@ -40,21 +40,12 @@ ls -lahrtR $releaseFolder
 
 moduleVersion=`cat TRINITYCORE_NAMI_VERSION`
 moduleRevision=$((`cat TRINITYCORE_NAMI_REVISION` + 1))
+sed -i 's/<<version>>/$moduleVersion/g' $releaseFolder/nami.json.tpl
+sed -i 's/<<revision>>/$moduleRevision/g' $releaseFolder/nami.json.tpl
+mv $releaseFolder/nami.json.tpl $releaseFolder/nami.json
 cd $workingDir
 tar czf trinitycore-module-${moduleVersion}-r${moduleRevision}.tar.gz $releaseFolder
 
-## Artifacts tarball is retrieved
-#artifactsDir=`cat /tmp/blacksmith_output | cut -d: -f2 | grep artifacts | grep tmp`
-#artifactsDir=$workingDir/TrinityCore
-#cp $artifactsDir/*.tar.gz $workingDir/trinityrelease/files
-#cd $workingDir/trinityrelease/files 
-#tar xzf $workingDir/trinityrelease/files/*.tar.gz 
-#rm $workingDir/trinityrelease/files/*.tar.gz
-#sed -i 's/<<version>>/3.3.5/g' $workingDir/trinityrelease/nami.json.tpl
-#sed -i 's/<<revision>>/1/g' $workingDir/trinityrelease/nami.json.tpl
-## 
-
 ## Testing
 
-#WIP
-
+./nami/bin/nami --log-level trace8 install $releaseFolder
