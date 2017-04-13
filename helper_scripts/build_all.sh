@@ -38,8 +38,8 @@ mv $workingDir/TrinityCore/sql/updates $releaseFolder/files/trinitycore/sql/upda
 rm $releaseFolder/files/README.md
 ls -lahrtR $releaseFolder
 
-moduleVersion=`cat TRINITYCORE_NAMI_VERSION`
-moduleRevision=$((`cat TRINITYCORE_NAMI_REVISION` + 1))
+moduleVersion=`cat $workingDir/TRINITYCORE_NAMI_VERSION`
+moduleRevision=$((`cat $workingDir/TRINITYCORE_NAMI_REVISION` + 1))
 sed -i 's/<<version>>/$moduleVersion/g' $releaseFolder/nami.json.tpl
 sed -i 's/<<revision>>/$moduleRevision/g' $releaseFolder/nami.json.tpl
 mv $releaseFolder/nami.json.tpl $releaseFolder/nami.json
