@@ -29,12 +29,13 @@ log "==================================="
 ## Preparing the module release
 releaseFolder=$workingDir/trinitycore-nami
 cp -a $workingDir/trinitycore-module $releaseFolder
-mv $workingDir/$SQL_files $releaseFolder/files
+mkdir -p $releaseFolder/files/trinitycore
+mv $workingDir/TDB_full_335*_ $releaseFolder/files/trinitycore
 for i in sql/base sql/updates ; do
   mkdir -p $releaseFolder/files/$i
 done
-mv $workingDir/TrinityCore/sql/base/*_database.sql $releaseFolder/files/sql/base
-mv $workingDir/TrinityCore/sql/updates $releaseFolder/files/sql/updates
+mv $workingDir/TrinityCore/sql/base/*_database.sql $releaseFolder/files/trinitycore/sql/base
+mv $workingDir/TrinityCore/sql/updates $releaseFolder/files/trinitycore/sql/updates
 rm $releaseFolder/files/README.md
 ls -lahrtR $releaseFolder
 
