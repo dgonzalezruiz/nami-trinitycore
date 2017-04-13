@@ -48,4 +48,4 @@ tar czf trinitycore-module-${moduleVersion}-r${moduleRevision}.tar.gz $releaseFo
 
 ## Testing
 
-docker run -v $releaseFolder:/tmp/trinitycore bitnami/minideb-extras nami --log-level trace8 install /tmp/trinitycore
+#docker run -v $releaseFolder:/tmp/trinitycore bitnami/minideb-extras nami --log-level trace8 install /tmp/trinitycore
