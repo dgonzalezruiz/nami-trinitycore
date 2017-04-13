@@ -1,9 +1,6 @@
 sudo: required
-dist: trusty
-language: nodejs
-  - "6.9"
-compiler:
-  - clang
+language: cpp
+services: docker
 before_install: ./helper_scripts/setup_env.sh
 install: ./helper_scripts/build_all.sh
 script: 

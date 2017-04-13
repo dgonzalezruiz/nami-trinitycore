@@ -48,4 +48,4 @@ tar czf trinitycore-module-${moduleVersion}-r${moduleRevision}.tar.gz $releaseFo
 
 ## Testing
 
-./nami/bin/nami --log-level trace8 install $releaseFolder
+docker run -v $releaseFolder:/tmp/trinitycore bitnami/minideb-extras nami --log-level trace8 install /tmp/trinitycore

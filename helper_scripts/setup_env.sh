@@ -17,14 +17,6 @@ sudo apt-get -qq install build-essential libtool make cmake cmake-data openssl p
 ## The repository with the source to compile is cloned 
 git clone -b 3.3.5 --single-branch https://github.com/TrinityCore/TrinityCore 
 
-## The repo with the deployment tool is cloned
-git clone https://github.com/bitnami/nami
-cd nami
-npm install
-npm run install-runtime
-bin/nami --help
-cd -
-
 ## The source SQL files are retrieved and extracted
 wget $SERVER_SQL
 p7zip -d $SQL_FILES.7z
