@@ -16,6 +16,12 @@ log() {
 }
 
 log "=================================="
+log " Enforcing usage of clang 3.9     "
+export CC=clang-3.9
+export CXX=clang++-3.9
+log "=================================="
+
+log "=================================="
 log "Performing compilation..."
 mkdir $workingDir/TrinityCore/bin
 cd $workingDir/TrinityCore/bin

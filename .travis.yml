@@ -21,9 +21,3 @@ deploy:
   file: trinitycore-module*.tar.gz
   on:
     repo: dgonzalezruiz/nami-trinitycore
-
-env:
-  global:
-    - CC=clang-3.9
-    - CXX=clang++-3.9
-
