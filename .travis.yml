@@ -1,13 +1,17 @@
 sudo: required
-language: cpp
 dist: trusty
+
+language: cpp
+compiler: clang
 services: docker
-compiler: gcc
+
 before_install: "./helper_scripts/setup_env.sh"
 install: "./helper_scripts/build_all.sh"
+
 script:
   - echo "Succesful build"
   - echo "Testing..."
+
 deploy:
   provider: releases
   api_key:
@@ -17,3 +21,9 @@ deploy:
   file: trinitycore-module*.tar.gz
   on:
     repo: dgonzalezruiz/nami-trinitycore
+
+env:
+  global:
+    - CC=clang-3.9
+    - CXX=clang++-3.9
+
