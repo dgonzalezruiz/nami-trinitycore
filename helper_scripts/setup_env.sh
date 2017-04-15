@@ -15,7 +15,7 @@ sudo apt-get -qq install clang-3.9 build-essential libtool make cmake cmake-data
                          libssl-dev libmysqlclient-dev libmysql++-dev libreadline6-dev   \
                          zlib1g-dev libbz2-dev libboost1.55-dev libboost-thread1.55-dev  \
                          libboost-filesystem1.55-dev libboost-system1.55-dev             \
-                         libboost-program-options1.55-dev libboost-iostreams1.55-dev
+                         libboost-program-options1.55-dev libboost-iostreams1.55-dev p7zip
 
 ## Set up proper compiler variables 
 export CC=clang-3.9 CXX=clang++-3.9
