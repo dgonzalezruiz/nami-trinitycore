@@ -44,7 +44,7 @@ sed -i 's/<<version>>/$moduleVersion/g' $releaseFolder/nami.json.tpl
 sed -i 's/<<revision>>/$moduleRevision/g' $releaseFolder/nami.json.tpl
 mv $releaseFolder/nami.json.tpl $releaseFolder/nami.json
 cd $workingDir
-tar czf trinitycore-module-${moduleVersion}-r${moduleRevision}.tar.gz $releaseFolder
+tar czf trinitycore-module-${moduleVersion}-r${moduleRevision}.tar.gz trinitycore-nami
 
 ## Testing
 

@@ -1,6 +1,5 @@
 sudo: required
 language: cpp
-compiler: clang
 dist: trusty
 services: docker
 before_install: "./helper_scripts/setup_env.sh"
