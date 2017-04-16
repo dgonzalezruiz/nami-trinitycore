@@ -1,0 +1,9 @@
+{
+  "username": "{{$global.env.TRINITYCORE_USER}}",
+  "password": "{{$global.env.TRINITYCORE_PASSWORD}}",
+  "realmlist": "{{$global.env.TRINITYCORE_REALMLIST}}",
+  "databaseServerHost": "{{$global.env.MARIADB_HOST}}",
+  "databaseServerPort": "{{$global.env.MARIADB_PORT}}",
+  "databaseUser": "{{$global.env.MYSQL_CLIENT_CREATE_DATABASE_USER}}",
+  "databasePassword": "{{$global.env.MYSQL_CLIENT_CREATE_DATABASE_PASSWORD}}"
+}

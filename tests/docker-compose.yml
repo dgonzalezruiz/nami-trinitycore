@@ -1,0 +1,24 @@
+version: '2'
+services:
+  mariadb:
+    image: 'bitnami/mariadb:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - 'mariadb_data:/bitnami/mariadb'
+
+  trinitycore:
+    build: .
+    tty: true
+    volumes: 
+      - '/home/bitnami/trinitycore-nami:/tmp/trinity'
+    depends_on:
+      - mariadb
+    environment:
+      - MYSQL_CLIENT_CREATE_DATABASE_NAME="auth world characters"
+      - MYSQL_CLIENT_CREATE_DATABASE_USER=trinity
+      - MYSQL_CLIENT_CREATE_DATABASE_PASSWORD=trinity
+
+volumes:
+  mariadb_data:
+    driver: local

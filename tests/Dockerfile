@@ -1,0 +1,31 @@
+FROM bitnami/minideb-extras:jessie-r13
+
+RUN install_packages vim libboost-all-dev libssl-dev libmysqlclient-dev libmysql++-dev libreadline6-dev zlib1g-dev libbz2-dev patch vim
+
+RUN bitnami-pkg unpack mysql-client-10.1.22-3 --checksum 9e881a7c404f658c93abd665ecd1372f61a591d784e6456c64c0129358a7ff1a
+
+VOLUME ["/var/trinitycore/etc"]
+
+ADD rootfs /
+
+RUN nami unpack /trinitycore-nami
+
+ADD https://github.com/dgonzalezruiz/docker-trinitycore/releases/download/Assets-986d830ae7b4/data-986d830ae7b4.tar.gz /tmp/assets.tar.gz
+
+RUN tar xzf /tmp/assets.tar.gz -C /var/trinitycore/
+
+ENV PATH=/opt/bitnami/mysql/bin:$PATH \
+    TRINITYCORE_USER="trinity" \
+    TRINITYCORE_PASSWORD="trinity" \
+    TRINITYCORE_REALMLIST="127.0.0.1" \ 
+    MARIADB_HOST="mariadb" \
+    MARIADB_PORT="3306" \
+    MARIADB_ROOT_USER="root" \
+    MARIADB_ROOT_PASSWORD="" \
+    TRINITYCORE_DATABASE_USER=$MARIADB_ROOT_USER \
+    TRINITYCORE_DATABASE_PASSWORD=$MARIADB_ROOT_PASSWORD \
+    ALLOW_EMPTY_PASSWORD="yes"
+
+ENTRYPOINT ["/app-entrypoint.sh"]
+
+CMD ["/run.sh"]

@@ -1,0 +1,23 @@
+36,37d35
+<       $app.info(`==> Creating database ${$app.createDatabaseName}...`);
+<       mysqlFunctions.createDatabase($app.createDatabaseName, adminConnection);
+50,57c48,57
+< 
+<       // Grant will create the username on-the-fly if the password is specified
+<       $app.info(`==> Granting access to ${$app.createDatabaseUser} to the database ${$app.createDatabaseName}...`);
+<       mysqlFunctions.grantPrivileges($app.createDatabaseName, $app.createDatabaseUser, _.merge({
+<         databaseUserPassword: $app.createDatabasePassword,
+<         privileges: $app.createDatabasePrivileges.split(/[;,]+/g).filter(p => !_.isEmpty(p))
+<       }, adminConnection));
+< 
+---
+>       _.forEach($app.createDatabaseName.replace(/"/g, '').split(' '), function(databaseName) {
+>         $app.info(`==> Creating database ${databaseName}...`);
+>         mysqlFunctions.createDatabase(databaseName, adminConnection);
+>         // Grant will create the username on-the-fly if the password is specified
+>         $app.info(`==> Granting access to ${$app.createDatabaseUser} to the database ${databaseName}...`);
+>         mysqlFunctions.grantPrivileges(databaseName, $app.createDatabaseUser, _.merge({
+>           databaseUserPassword: $app.createDatabasePassword,
+>           privileges: $app.createDatabasePrivileges.split(/[;,]+/g).filter(p => !_.isEmpty(p))
+>         }, adminConnection));
+>       });
