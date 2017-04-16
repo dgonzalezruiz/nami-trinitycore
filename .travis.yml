@@ -21,3 +21,9 @@ deploy:
   file: trinitycore-module*.tar.gz
   on:
     repo: dgonzalezruiz/nami-trinitycore
+
+env:
+  global:
+    - WORLD_SQL=TDB_full_335.62_2016_10_17
+    - WORLD_SQL_URL=https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.62/$WORLD_SQL.7z
+    - MAPS_URL=https://github.com/dgonzalezruiz/docker-trinitycore/releases/download/Assets-986d830ae7b4/data-986d830ae7b4.tar.gz

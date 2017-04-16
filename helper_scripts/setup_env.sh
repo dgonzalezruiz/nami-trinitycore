@@ -1,10 +1,6 @@
 #!/bin/bash 
 set -e
 
-## SQL set release used; will be downloaded and integrated in the released tarball
-SQL_FILES=TDB_full_335.62_2016_10_17
-SERVER_SQL=https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.62/$SQL_FILES.7z
-
 ##Update mirrors for CLANG overriding
 wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
 yes | sudo add-apt-repository 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-3.9 main'
@@ -24,5 +20,5 @@ export CC=clang-3.9 CXX=clang++-3.9
 git clone -b 3.3.5 --single-branch https://github.com/TrinityCore/TrinityCore 
 
 ## The source SQL files are retrieved and extracted
-wget $SERVER_SQL
-p7zip -d $SQL_FILES.7z
+wget $WORLD_SQL_URL
+p7zip -d $WORLD_SQL.7z
