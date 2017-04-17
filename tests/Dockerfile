@@ -10,6 +10,9 @@ ADD rootfs /
 
 RUN nami unpack /trinitycore-nami
 
+#TEMPORARY & DIRTY PATCh
+RUN cp -a /root/.nami/components/com.bitnami.mysql-client/lib /root/.nami/components/com.trinitycore/
+
 ADD https://github.com/dgonzalezruiz/docker-trinitycore/releases/download/Assets-986d830ae7b4/data-986d830ae7b4.tar.gz /tmp/assets.tar.gz
 
 RUN tar xzf /tmp/assets.tar.gz -C /var/trinitycore/
