@@ -25,7 +25,7 @@ log "=================================="
 log "Performing compilation..."
 mkdir $workingDir/TrinityCore/bin
 cd $workingDir/TrinityCore/bin
-cmake ../ -DWITH_WARNINGS=1 -DWITH_COREDEBUG=0 -DUSE_COREPCH=1 -DUSE_SCRIPTPCH=1 -DTOOLS=1 -DSCRIPTS="dynamic" -DSERVERS=1 -DNOJEM=1 -DWITH_DYNAMIC_LINKING=1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp/trinitycore -DCMAKE_C_FLAGS="-Werror" -DCMAKE_CXX_FLAGS="-Werror"
+cmake ../ -DWITH_WARNINGS=1 -DWITH_COREDEBUG=0 -DUSE_COREPCH=1 -DUSE_SCRIPTPCH=1 -DTOOLS=1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp/trinitycore -DCMAKE_C_FLAGS="-Werror" -DCMAKE_CXX_FLAGS="-Werror"
 make -j $((`nproc --all` - 1)) -k && make install
 log "skipping compilation"
 log "Compilation finished"
@@ -40,7 +40,6 @@ mkdir -p $releaseFolder/files/trinitycore/sql/base
 mv $workingDir/TrinityCore/sql/base/*_database.sql $releaseFolder/files/trinitycore/sql/base
 mv $workingDir/TrinityCore/sql/updates $releaseFolder/files/trinitycore/sql/
 rm $releaseFolder/files/README.md
-ls -lahrtR $releaseFolder
 
 moduleVersion=`cat $workingDir/TRINITYCORE_NAMI_VERSION`
 moduleRevision=$((`cat $workingDir/TRINITYCORE_NAMI_REVISION` + 1))
@@ -49,10 +48,3 @@ sed -i 's/<<revision>>/$moduleRevision/g' $releaseFolder/nami.json.tpl
 mv $releaseFolder/nami.json.tpl $releaseFolder/nami.json
 cd $workingDir
 tar czf trinitycore-module-${moduleVersion}-r${moduleRevision}.tar.gz trinitycore-nami
-
-## Testing
-
-cd tests
-cp -a $workingDir/trinitycore-nami rootfs/
-docker-compose build
-docker-compose up

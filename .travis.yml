@@ -9,8 +9,7 @@ before_install: "./helper_scripts/setup_env.sh"
 install: "./helper_scripts/build_all.sh"
 
 script:
-  - echo "Succesful build"
-  - echo "Testing..."
+  - "./helper_scripts/test_all.sh"
 
 deploy:
   provider: releases
