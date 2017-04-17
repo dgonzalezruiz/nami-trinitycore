@@ -8,10 +8,10 @@ VOLUME ["/var/trinitycore/etc"]
 
 ADD rootfs /
 
-RUN nami unpack /trinitycore-nami
+#TEMPORARY & DIRTY PATCH
+RUN cp -a /root/.nami/components/com.bitnami.mysql-client/lib /trinitycore-nami/
 
-#TEMPORARY & DIRTY PATCh
-RUN cp -a /root/.nami/components/com.bitnami.mysql-client/lib /root/.nami/components/com.trinitycore/
+RUN nami unpack /trinitycore-nami
 
 ADD https://github.com/dgonzalezruiz/docker-trinitycore/releases/download/Assets-986d830ae7b4/data-986d830ae7b4.tar.gz /tmp/assets.tar.gz
 
