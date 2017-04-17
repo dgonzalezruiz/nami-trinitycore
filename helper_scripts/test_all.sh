@@ -35,4 +35,5 @@ if [ `docker ps | wc -l` -le 3 ] ; then
   log "Containers still running"
 else 
   log "You messed up! :)"
+  exit 1
 fi 

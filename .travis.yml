@@ -1,16 +1,22 @@
 sudo: required
 dist: trusty
-
 language: cpp
 compiler: clang
 services: docker
-
 before_install: "./helper_scripts/setup_env.sh"
 install: "./helper_scripts/build_all.sh"
-
 script:
-  - "./helper_scripts/test_all.sh"
-
+- "./helper_scripts/test_all.sh"
+before_deploy:
+- git config --global user.email "builds@travis-ci.com"
+- git config --global user.name "Travis CI"
+- echo $((`cat TRINITYCORE_NAMI_REVISION` + 1)) > TRINITYCORE_NAMI_REVISION
+- git add TRINITYCORE_NAMI_REVISION
+- git commit -m "TravisCI: Increase revision"
+- git push -q https://$GH_TOKEN@github.com/dgonzalezruiz/nami-trinitycore.git
+- export GIT_TAG=`cat TRINITYCORE_NAMI_VERSION`-r`cat TRINITYCORE_NAMI_REVISION`
+- git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+  -git push -q https://$GH_TOKEN@github.com/dgonzalezruiz/nami-trinitycore.git --tags
 deploy:
   provider: releases
   api_key:
@@ -20,9 +26,9 @@ deploy:
   file: trinitycore-module*.tar.gz
   on:
     repo: dgonzalezruiz/nami-trinitycore
-
 env:
   global:
-    - WORLD_SQL=TDB_full_335.62_2016_10_17
-    - WORLD_SQL_URL=https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.62/$WORLD_SQL.7z
-    - MAPS_URL=https://github.com/dgonzalezruiz/docker-trinitycore/releases/download/Assets-986d830ae7b4/data-986d830ae7b4.tar.gz
+  - WORLD_SQL=TDB_full_335.62_2016_10_17
+  - WORLD_SQL_URL=https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.62/$WORLD_SQL.7z
+  - MAPS_URL=https://github.com/dgonzalezruiz/docker-trinitycore/releases/download/Assets-986d830ae7b4/data-986d830ae7b4.tar.gz
+  - secure: yIsGuuLVnwbjXqIc5/Lt/K+v8OOmHCvhGTNtkoROc2thhJsowvuM6rEgdx5WNJKK+yQR3aEFMc2lU/A0WSVFXg/Tzgl2BRIH7vOq6n3KcK4hd1tt4z3rHTzWa2rZ6m3wXMhVXsYLyxNhYYj//QrZBjH4692MpqGiOMPplqwuTcMor46/VBuvjf60PUlaGnvpHNb192SMlKQ/fkrIoN4vxDpQIZoS7StJeUPzq7FaoN/g2YGfaKTmEZ4ZpD2qcROAL8qo8tq3S/lFZOIQDG4mGK6h+Z3EIpOGkfgASo3Txl5HtpHLWqQL4DRMg9IqMkvJgMaLg+s2D8HZY4JF1F2W2v9ahYpHP/GmAqqs9/dWfiOkuQ6MUivBLo/2m0xPad5f9mK54Kn0W0P7JY5VpLNFuwLTJgYHptIpPHBKKC8rFMoCYgy6OCq3lQ7y4ltJHIlN6j8tgz9lKPmczg5QQRyJXn4b7Vy4ay3R5RT9sotgZCrQCZeI4AnULoRuyjIGwb5lkxY7enbCaGqNp1bA5v+0PktTfkCEYA8uEDnH/3MdzRNEIH746YsK14g/zLv7mWsfREVHhUOZAI1+FeaFjRloVfKgxzW1ayp8b6xIyyiw1p8yz9vltwEFMDpZ9CFCWce/zLWzMETHifLQJvxvakWnz2FKz5Quz9L38Q5gkoxVJtY=
