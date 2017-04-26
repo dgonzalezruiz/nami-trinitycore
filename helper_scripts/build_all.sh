@@ -27,8 +27,8 @@ mv $workingDir/TrinityCore/sql/base/*_database.sql $releaseFolder/files/trinityc
 mv $workingDir/TrinityCore/sql/updates $releaseFolder/files/trinitycore/sql/
 rm $releaseFolder/files/README.md
 
-moduleVersion=`cat $workingDir/TRINITYCORE_NAMI_VERSION`
-moduleRevision=$((`cat $workingDir/TRINITYCORE_NAMI_REVISION` + 1))
+moduleVersion=$(git tag | tail -n1 | cut -d'-' -f1)
+moduleRevision=$(git tag | tail -n1 | cut -d'r' -f2)
 sed -i 's/<<version>>/$moduleVersion/g' $releaseFolder/nami.json.tpl
 sed -i 's/<<revision>>/$moduleRevision/g' $releaseFolder/nami.json.tpl
 mv $releaseFolder/nami.json.tpl $releaseFolder/nami.json
