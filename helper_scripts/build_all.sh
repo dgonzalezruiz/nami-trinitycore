@@ -15,21 +15,7 @@ log() {
     echo "$@" >&2
 }
 
-log "=================================="
-log " Enforcing usage of clang 3.9     "
-export CC=clang-3.9
-export CXX=clang++-3.9
-log "=================================="
-
-log "=================================="
-log "Performing compilation..."
-mkdir $workingDir/TrinityCore/bin
-cd $workingDir/TrinityCore/bin
-cmake ../ -DWITH_WARNINGS=1 -DWITH_COREDEBUG=0 -DUSE_COREPCH=1 -DUSE_SCRIPTPCH=1 -DTOOLS=1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/tmp/trinitycore -DCMAKE_C_FLAGS="-Werror" -DCMAKE_CXX_FLAGS="-Werror"
-make -j $((`nproc --all` - 1)) -k && make install
-log "skipping compilation"
-log "Compilation finished"
-log "==================================="
+tar xzf $TRAVIS_BUILD_DIR/trinitycore.tar.gz -C /tmp
 
 ## Preparing the module release
 releaseFolder=$workingDir/trinitycore-nami
