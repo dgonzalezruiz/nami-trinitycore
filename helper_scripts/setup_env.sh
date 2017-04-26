@@ -2,7 +2,7 @@
 set -e
 
 ## The released tarball with the compiled binaries is retrieved
-git fetch tags
+git fetch --tags
 GIT_TAG="$(git tag | tail -n1)"
 URL="https://github.com/dgonzalezruiz/trinitycore-builds/releases/download/$GIT_TAG/trinitycore-$GIT_TAG.tar.gz"
 URL_STATUS="curl -o /dev/null --silent --head --write-out '%{http_code}\n' $URL"
