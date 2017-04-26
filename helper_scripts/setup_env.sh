@@ -28,6 +28,8 @@ sudo apt-get -qq install clang-3.9 build-essential libtool make cmake cmake-data
 ## Set up proper compiler variables 
 export CC=clang-3.9 CXX=clang++-3.9
 
+## The repository with the source to compile is cloned 
+git clone -b 3.3.5 --single-branch https://github.com/TrinityCore/TrinityCore 
 
 ## The source SQL files are retrieved and extracted
 wget $WORLD_SQL_URL
