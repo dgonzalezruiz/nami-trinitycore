@@ -26,8 +26,8 @@ log "=================================="
 log "Launching Containers...           "
 docker-compose up -d
 log "=================================="
-log "Going to sleep for a minute...    "
-sleep 60
+log "Going to sleep for three minutes...    "
+sleep 180
 log "=================================="
 log "Checking whether the build errored"
 log "=================================="
