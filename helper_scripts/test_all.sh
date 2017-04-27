@@ -33,6 +33,7 @@ log "Checking whether the build errored"
 log "=================================="
 if [ `docker ps | wc -l` -le 3 ] ; then
   log "Containers still running"
+  docker-compose logs
 else 
   log "You messed up! :)"
   exit 1
