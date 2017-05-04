@@ -3,20 +3,13 @@ dist: trusty
 language: cpp
 compiler: clang
 services: docker
+
 before_install: "./helper_scripts/setup_env.sh"
 install: "./helper_scripts/build_all.sh"
+
 script:
 - "./helper_scripts/test_all.sh"
-before_deploy:
-- git config --global user.email "builds@travis-ci.com"
-- git config --global user.name "Travis CI"
-- echo $((`cat TRINITYCORE_NAMI_REVISION` + 1)) > TRINITYCORE_NAMI_REVISION
-- git add TRINITYCORE_NAMI_REVISION
-- git commit -m "[TravisCI] Increase revision"
-- git push -q https://$GH_TOKEN@github.com/dgonzalezruiz/nami-trinitycore.git
-- export GIT_TAG=`cat TRINITYCORE_NAMI_VERSION`-r`cat TRINITYCORE_NAMI_REVISION`
-- git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-- git push -q https://$GH_TOKEN@github.com/dgonzalezruiz/nami-trinitycore.git --tags
+
 deploy:
   provider: releases
   api_key:
@@ -26,6 +19,9 @@ deploy:
   file: trinitycore-module*.tar.gz
   on:
     repo: dgonzalezruiz/nami-trinitycore
+    tags: true
+    all_branches: true
+
 env:
   global:
   - WORLD_SQL=TDB_full_335.62_2016_10_17
