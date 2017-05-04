@@ -12,11 +12,11 @@ before_deploy:
 - git config --global user.name "Travis CI"
 - echo $((`cat TRINITYCORE_NAMI_REVISION` + 1)) > TRINITYCORE_NAMI_REVISION
 - git add TRINITYCORE_NAMI_REVISION
-- git commit -m "TravisCI: Increase revision"
+- git commit -m "[TravisCI] Increase revision"
 - git push -q https://$GH_TOKEN@github.com/dgonzalezruiz/nami-trinitycore.git
 - export GIT_TAG=`cat TRINITYCORE_NAMI_VERSION`-r`cat TRINITYCORE_NAMI_REVISION`
 - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-  -git push -q https://$GH_TOKEN@github.com/dgonzalezruiz/nami-trinitycore.git --tags
+- git push -q https://$GH_TOKEN@github.com/dgonzalezruiz/nami-trinitycore.git --tags
 deploy:
   provider: releases
   api_key:
