@@ -40,7 +40,6 @@ $app.helpers.configureRealmlist = function(databasePassword, realmlist) {
 
 // This fills the config files with the right credentials
 $app.helpers.configureDatabase = function( databaseHandler, confFiles) {
-  console.log(databaseHandler);
   $file.substitute([confFiles.worldserver, confFiles.authserver],
     [{
       pattern: /LoginDatabaseInfo\s*=\s*".*"/m,

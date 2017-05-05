@@ -1,6 +1,10 @@
 #!/bin/bash 
 set -e
 
+log() {
+    echo "$@" >&2
+}
+
 ## The released tarball with the compiled binaries is retrieved
 ## The tag that will be downloaded is fetched from the original repo
 git clone https://github.com/dgonzalezruiz/trinitycore-builds.git
@@ -9,6 +13,9 @@ git fetch --tags
 GIT_TAG="$(git tag | tail -n1)"
 cd ../
 
+log "==============================="
+log "Going to fetch version $GIT_TAG"
+log "==============================="
 URL="https://github.com/dgonzalezruiz/trinitycore-builds/releases/download/$GIT_TAG/trinitycore-$GIT_TAG.tar.gz"
 URL_STATUS="curl -o /dev/null --silent --head --write-out '%{http_code}\n' $URL"
 while [[ "$($URL_STATUS)" == *"4"* || "$($URL_STATUS)" == *"5"* ]] ; do 
