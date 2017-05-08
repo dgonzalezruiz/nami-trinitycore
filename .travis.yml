@@ -11,6 +11,9 @@ install: "./scripts/build_all.sh"
 script:
 - "./scripts/test_all.sh"
 
+after_failure:
+- "./script/tag_deletion.sh"
+
 deploy:
   provider: releases
   api_key:
