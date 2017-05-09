@@ -20,7 +20,7 @@ tar xzf $TRAVIS_BUILD_DIR/trinitycore.tar.gz -C /tmp
 ## Preparing the module release
 releaseFolder=$workingDir/trinitycore-nami
 cp -a $workingDir/trinitycore-module $releaseFolder
-mv /tmp/trinitycore $releaseFolder/files/trinitycore
+mv /tmp/trinitycore $releaseFolder/files/
 mv $workingDir/TDB_full_335* $releaseFolder/files/trinitycore/
 mkdir -p $releaseFolder/files/trinitycore/sql/base
 mv $workingDir/TrinityCore/sql/base/*_database.sql $releaseFolder/files/trinitycore/sql/base
