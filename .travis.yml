@@ -22,7 +22,7 @@ deploy:
     all_branches: true
 env:
   global:
-  - WORLD_SQL=TDB_full_335.62_2016_10_17
-  - WORLD_SQL_URL=https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.62/$WORLD_SQL.7z
+  - WORLD_SQL=TDB_full_335.63_2017_04_18
+  - WORLD_SQL_URL=https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.63/$WORLD_SQL.7z
   - MAPS_URL=https://github.com/dgonzalezruiz/docker-trinitycore/releases/download/Assets-986d830ae7b4/data-986d830ae7b4.tar.gz
   - secure: fR0MEWsiHKPKxH2NT6hLg8Wpv0uhXY0qmBt2Msl8jeBHbgRyJdw8t3oFuTDjS8zNxWiB6Q+w7uifIkLuJRIY7NZxLEsdDZjLNeuBgKki1kARfKMFiQ1Wy/r5CR+wlkQYr9an6zcVr0EtlL94s6119kPGTdeJdk/z9w8hR3HJaeH10Ni1ThiBhgCdoArlbafWpKXjZLpOpS35QwCn2z77nQGtfssTP+YWgemlYnOpwMGYYGqFyIoBsurI4b2Ro2gFSRApfjhb7X9kNKzc3nTrjxZ8uQzYCM/Hz1eb8phG0KLrqJJYLFi9Jawo1DsfssL+9oKZLfYJkRInYB3CNhbGFFFqaqxIF8fB2VyW9JIyR3eQMrgecXzG2JlrE0y23OVLiXPS6IzWWEOUe0qoGM7gSs3nf4muBhOLanLEOaMI1tJGzsDQiK1x4EI0d/BzQA31GS+nIM4y0h85eiA/VMnqzdsujtRinQZbvvkN9GyVk1/m0Iw+WxxhVxPr68ErFaGYXkq6M1bM3H6jhX1AoL3Du1GZVHL27xBSPPiMrGo0ofbrq3AGi28eUXzq/bdoaZhrdk5d7yMlpbq3vihsxjMl0cBvHJ7LPHENtODqto5gdTXHHVBtUygAavpNouHvJRIU1w311t1kOd9W3M47RcVB2dNmdoJyfFnRmMv+lzm9YeM=
