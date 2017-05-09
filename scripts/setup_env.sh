@@ -22,6 +22,9 @@ while [[ "$($URL_STATUS)" == *"4"* || "$($URL_STATUS)" == *"5"* ]] ; do
   sleep 1 
   echo "Waiting for released binary to be available..." 
 done
+ls $TRAVIS_BUILD_DIR/trinitycore.tar.gz 
+ls $TRAVIS_BUILD_DIR/trinitycore
+ls $TRAVIS_BUILD_DIR/tests/rootfs
 
 curl -L $URL > $TRAVIS_BUILD_DIR/trinitycore.tar.gz 
 
