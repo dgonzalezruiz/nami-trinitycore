@@ -33,7 +33,11 @@ log "Checking whether the build errored"
 log "=================================="
 if [ `docker ps | wc -l` -le 3 ] ; then
   log "Containers still running"
-  docker-compose logs
+  dockerLogs=$(docker-compose logs --tail="all")
+  echo $dockerLogs
+  if [ $dockerLogs == *"ERROR"* ||  $dockerLogs == *"error"* ] ; then
+    log "There was an issue in the container execution. Exiting..."
+    exit 2
 else 
   log "You messed up! :)"
   exit 1
