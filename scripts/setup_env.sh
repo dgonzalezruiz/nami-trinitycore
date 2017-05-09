@@ -23,9 +23,6 @@ while [[ "$($URL_STATUS)" == *"4"* || "$($URL_STATUS)" == *"5"* ]] ; do
   echo "Waiting for released binary to be available..." 
 done
 
-ls /usr/lib/x86_64-linux-gnu/libmysqlclient_r.so
-ls /usr/include/mysql
-
 curl -L $URL > $TRAVIS_BUILD_DIR/trinitycore.tar.gz 
 
 ##Update mirrors for CLANG overriding
