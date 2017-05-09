@@ -1,19 +1,14 @@
 sudo: required
 dist: trusty
 language: cpp
-
 compiler: clang
 services: docker
-
 before_install: "./scripts/setup_env.sh"
 install: "./scripts/build_all.sh"
-
 script:
 - "./scripts/test_all.sh"
-
 after_failure:
 - "./script/tag_deletion.sh"
-
 deploy:
   provider: releases
   api_key:
@@ -25,10 +20,9 @@ deploy:
     repo: dgonzalezruiz/nami-trinitycore
     tags: true
     all_branches: true
-
 env:
   global:
   - WORLD_SQL=TDB_full_335.62_2016_10_17
   - WORLD_SQL_URL=https://github.com/TrinityCore/TrinityCore/releases/download/TDB335.62/$WORLD_SQL.7z
   - MAPS_URL=https://github.com/dgonzalezruiz/docker-trinitycore/releases/download/Assets-986d830ae7b4/data-986d830ae7b4.tar.gz
-  - secure: yIsGuuLVnwbjXqIc5/Lt/K+v8OOmHCvhGTNtkoROc2thhJsowvuM6rEgdx5WNJKK+yQR3aEFMc2lU/A0WSVFXg/Tzgl2BRIH7vOq6n3KcK4hd1tt4z3rHTzWa2rZ6m3wXMhVXsYLyxNhYYj//QrZBjH4692MpqGiOMPplqwuTcMor46/VBuvjf60PUlaGnvpHNb192SMlKQ/fkrIoN4vxDpQIZoS7StJeUPzq7FaoN/g2YGfaKTmEZ4ZpD2qcROAL8qo8tq3S/lFZOIQDG4mGK6h+Z3EIpOGkfgASo3Txl5HtpHLWqQL4DRMg9IqMkvJgMaLg+s2D8HZY4JF1F2W2v9ahYpHP/GmAqqs9/dWfiOkuQ6MUivBLo/2m0xPad5f9mK54Kn0W0P7JY5VpLNFuwLTJgYHptIpPHBKKC8rFMoCYgy6OCq3lQ7y4ltJHIlN6j8tgz9lKPmczg5QQRyJXn4b7Vy4ay3R5RT9sotgZCrQCZeI4AnULoRuyjIGwb5lkxY7enbCaGqNp1bA5v+0PktTfkCEYA8uEDnH/3MdzRNEIH746YsK14g/zLv7mWsfREVHhUOZAI1+FeaFjRloVfKgxzW1ayp8b6xIyyiw1p8yz9vltwEFMDpZ9CFCWce/zLWzMETHifLQJvxvakWnz2FKz5Quz9L38Q5gkoxVJtY=
+  - secure: fR0MEWsiHKPKxH2NT6hLg8Wpv0uhXY0qmBt2Msl8jeBHbgRyJdw8t3oFuTDjS8zNxWiB6Q+w7uifIkLuJRIY7NZxLEsdDZjLNeuBgKki1kARfKMFiQ1Wy/r5CR+wlkQYr9an6zcVr0EtlL94s6119kPGTdeJdk/z9w8hR3HJaeH10Ni1ThiBhgCdoArlbafWpKXjZLpOpS35QwCn2z77nQGtfssTP+YWgemlYnOpwMGYYGqFyIoBsurI4b2Ro2gFSRApfjhb7X9kNKzc3nTrjxZ8uQzYCM/Hz1eb8phG0KLrqJJYLFi9Jawo1DsfssL+9oKZLfYJkRInYB3CNhbGFFFqaqxIF8fB2VyW9JIyR3eQMrgecXzG2JlrE0y23OVLiXPS6IzWWEOUe0qoGM7gSs3nf4muBhOLanLEOaMI1tJGzsDQiK1x4EI0d/BzQA31GS+nIM4y0h85eiA/VMnqzdsujtRinQZbvvkN9GyVk1/m0Iw+WxxhVxPr68ErFaGYXkq6M1bM3H6jhX1AoL3Du1GZVHL27xBSPPiMrGo0ofbrq3AGi28eUXzq/bdoaZhrdk5d7yMlpbq3vihsxjMl0cBvHJ7LPHENtODqto5gdTXHHVBtUygAavpNouHvJRIU1w311t1kOd9W3M47RcVB2dNmdoJyfFnRmMv+lzm9YeM=
