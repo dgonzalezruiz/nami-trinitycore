@@ -38,6 +38,7 @@ if [ `docker ps | wc -l` -le 3 ] ; then
   if [ $dockerLogs == *"ERROR"* ||  $dockerLogs == *"error"* ] ; then
     log "There was an issue in the container execution. Exiting..."
     exit 2
+  fi 
 else 
   log "You messed up! :)"
   exit 1
