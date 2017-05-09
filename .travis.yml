@@ -1,14 +1,20 @@
 sudo: required
 dist: trusty
+
+cache: false
 language: cpp
 compiler: clang
 services: docker
+
 before_install: "./scripts/setup_env.sh"
 install: "./scripts/build_all.sh"
+
 script:
 - "./scripts/test_all.sh"
+
 after_failure:
 - "./script/tag_deletion.sh"
+
 deploy:
   provider: releases
   api_key:
