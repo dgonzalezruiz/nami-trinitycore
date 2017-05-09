@@ -34,7 +34,7 @@ log "=================================="
 if [ `docker ps | wc -l` -le 3 ] ; then
   log "Containers still running"
   dockerLogs=$(docker-compose logs --tail="all")
-  echo $dockerLogs
+  docker-compose logs --tail="all"
   if [[ $dockerLogs == *"ERROR"* || $dockerLogs == *"error"* ]] ; then
     log "There was an issue in the container execution. Exiting..."
     exit 2
