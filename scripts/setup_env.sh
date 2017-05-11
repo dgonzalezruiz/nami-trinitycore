@@ -28,6 +28,8 @@ curl -L $URL > $TRAVIS_BUILD_DIR/trinitycore.tar.gz
 ## The repository with the source to compile is cloned 
 git clone -b 3.3.5 --single-branch https://github.com/TrinityCore/TrinityCore 
 
+sudo apt update && sudo apt install p7zip -y
+
 ## The source SQL files are retrieved and extracted
 wget $WORLD_SQL_URL
 p7zip -d $WORLD_SQL.7z
