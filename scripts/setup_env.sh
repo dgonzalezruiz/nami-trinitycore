@@ -5,6 +5,10 @@ log() {
     echo "$@" >&2
 }
 
+printenv
+
+FORCING THIS THING TO FAIL
+
 ## The released tarball with the compiled binaries is retrieved
 ## The tag that will be downloaded is fetched from the original repo
 git clone https://github.com/dgonzalezruiz/trinitycore-builds.git
