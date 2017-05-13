@@ -1,7 +1,11 @@
 sudo: required
 dist: trusty
 
-cache: false
+cache:
+  timeout: 500
+  directories:
+  - trinitycore
+
 language: cpp
 compiler: clang
 services: docker
