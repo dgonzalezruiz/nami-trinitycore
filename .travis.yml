@@ -10,11 +10,7 @@ language: cpp
 compiler: clang
 services: docker
 
-before_install: "./scripts/setup_env.sh"
-install: "./scripts/build_all.sh"
-
-script:
-- "./scripts/test_all.sh"
+script: "./scripts/setup_env.sh"
 
 after_failure:
 - "./script/tag_deletion.sh"
