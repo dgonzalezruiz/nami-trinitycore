@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Note that this code, when placed inside an after_failure section
+# will only be executed when a failure happens in the script section, 
+# and not for failures in installation
+
 if [ ! -z $TRAVIS_TAG ] ; then
   git config --global user.email "builds@travis-ci.com"
   git config --global user.name "Travis CI"

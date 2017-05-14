@@ -9,17 +9,21 @@
 set -e
 
 ## We store the working directory at start so as to be careless about the working directory travisCI sets up
-export workingDir=`pwd`
+export TRAVIS_BUILD_DIR=`pwd`
 
 log() {
     echo "$@" >&2
 }
 
-cd tests
+tcd() {
+  cd $TRAVIS_BUILD_DIR/$1
+}
+
+tcd tests
 
 log "=================================="
 log "Building Docker images for testing"
-cp -a $workingDir/trinitycore-nami rootfs/
+cp -a $TRAVIS_BUILD_DIR/trinitycore-nami rootfs/
 docker-compose build
 log "=================================="
 log "=================================="

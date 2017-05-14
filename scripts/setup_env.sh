@@ -5,6 +5,10 @@ log() {
     echo "$@" >&2
 }
 
+tcd() {
+  cd $TRAVIS_BUILD_DIR/$1
+}
+
 printenv
 
 FORCING THIS THING TO FAIL
@@ -12,10 +16,10 @@ FORCING THIS THING TO FAIL
 ## The released tarball with the compiled binaries is retrieved
 ## The tag that will be downloaded is fetched from the original repo
 git clone https://github.com/dgonzalezruiz/trinitycore-builds.git
-cd trinitycore-builds
+tcd trinitycore-builds
 git fetch --tags
 GIT_TAG="$(git tag | tail -n1)"
-cd ../
+tcd
 
 log "==============================="
 log "Going to fetch version $GIT_TAG"
